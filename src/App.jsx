@@ -7,6 +7,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from "./components/Home/Home"
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes"
 import Purchases from "./components/Purchases/Purchases"
+import Cart from "./components/Cart/Cart"
 
 
 
@@ -20,6 +21,7 @@ function App() {
     <Routes> 
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/cart' element={<Cart />} />
 
       <Route element={<ProtectedRoutes />}>
 

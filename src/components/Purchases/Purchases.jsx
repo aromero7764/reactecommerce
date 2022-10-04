@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoutButton from '../LogoutButton/LogoutButton';
 
 const Purchases = () => {
 
@@ -7,6 +8,7 @@ const Purchases = () => {
     return (
         <div>
             este es purchases
+            <LogoutButton />
         </div>
     );
 };

@@ -4,11 +4,10 @@ const ProtectedRoutes = () => {
     
   const tokenExists = () => {
     const token = localStorage.getItem('token');
-    return token !== '';
+    return token /* !== ''; */
   };
 
-  // Aquí va la condición. Puede ser una condición de cualquier tipo. Lo que
-  // Importa es que valide si el usuario está loggeado o no
+  
   if (tokenExists()) {
     return <Outlet />;
   } else {

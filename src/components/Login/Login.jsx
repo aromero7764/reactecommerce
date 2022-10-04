@@ -1,22 +1,26 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Navigate, useNavigate } from 'react-router-dom';
 import LogoutButton from '../LogoutButton/LogoutButton';
 
 
 const Login = () => {
 
+    const navigate = useNavigate()
+
     const {register, handleSubmit} = useForm()
 
 
     const submit = (data)=> {
-        console.log(data)
+
         axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/users/login', data)
             .then(res=> {
                 console.log(res.data.data.token)
                 localStorage.setItem("token", res.data.data.token)
-                alert("usuario logueado")
+                navigate("/purchases")
             } )
+            
             .catch(error => {
                 if(error.response?.status === 404) {
                     alert("credenciales invalidas")

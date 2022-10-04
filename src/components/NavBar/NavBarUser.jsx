@@ -1,8 +1,13 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css';
+import PurchasesButton from '../PurchasesButton/PurchasesButton';
+import { useNavigate } from 'react-router-dom';
 
 
 const NavBarUser = () => {
+    const navigate = useNavigate();
+
+
     return (
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -21,12 +26,10 @@ const NavBarUser = () => {
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <a className="button is-light">
+                            <a onClick={()=> navigate("/login")} className="button is-light">
                                 <strong>Loging</strong>
                             </a>
-                            <a className="button is-light">
-                                <strong>Purchases</strong>
-                            </a>
+                            <PurchasesButton />
                             <a className="button is-light">
                                 <strong>Cart</strong>
                             </a>
