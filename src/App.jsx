@@ -10,6 +10,7 @@ import Purchases from "./components/Purchases/Purchases"
 import Cart from "./components/Cart/Cart"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
+import Product from "./components/Product/Product"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/cart' element={<Cart />} />
+      <Route path="/products/:id" element={<Product />} />
 
       <Route element={<ProtectedRoutes />}>
 
