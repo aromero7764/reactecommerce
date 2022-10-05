@@ -2,14 +2,23 @@ import React from 'react';
 import 'bulma/css/bulma.min.css';
 import PurchasesButton from '../PurchasesButton/PurchasesButton';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCartOpenState } from '../../store/slices/CartOpen.slice';
+import '@creativebulma/bulma-badge/dist/bulma-badge.css'
+import ShoppingCardButton from '../ShoppingCardButton/ShoppingCardButton';
 
 
 const NavBarUser = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    const cartOpen = useSelector(state => state.cartOpen)
+
+    const setCartIsOpen = () => dispatch(setCartOpenState(!cartOpen))
 
 
     return (
-        <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-primary has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <button className='navbar-item'>
                         e-Commerce
@@ -22,7 +31,7 @@ const NavBarUser = () => {
                 </a>
             </div>
 
-            <div className="navbar-menu">
+            <div className="navbar-menu is-active">
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
@@ -30,10 +39,7 @@ const NavBarUser = () => {
                                 <strong>Loging</strong>
                             </a>
                             <PurchasesButton />
-                            <a className="button is-light">
-                                <strong>Cart</strong>
-                            </a>
-                           
+                            <ShoppingCardButton />
                         </div>
                     </div>
                 </div>

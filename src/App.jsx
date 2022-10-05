@@ -8,11 +8,12 @@ import Home from "./components/Home/Home"
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes"
 import Purchases from "./components/Purchases/Purchases"
 import Cart from "./components/Cart/Cart"
-
-
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
 
 
 function App() {
+
 
 
   return (

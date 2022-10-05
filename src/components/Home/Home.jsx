@@ -1,9 +1,12 @@
 import React from 'react';
 import Category from '../Aside/Category/Category';
 import Price from '../Aside/Price';
+import Cart from '../Cart/Cart';
 import Login from '../Login/Login';
 import NavBarUser from '../NavBar/NavBarUser';
+import ProductsHome from '../ProductsHome/ProductsHome';
 import SearchBar from '../SearchBar/SearchBar';
+import ShoppingCardButton from '../ShoppingCardButton/ShoppingCardButton';
 
 
 
@@ -11,7 +14,7 @@ const Home = () => {
     return (
         <div>
             <NavBarUser/>
-
+            
             <div className="mb-6">
                 <span></span>
             </div>
@@ -34,7 +37,9 @@ const Home = () => {
                         <div className="column">
 
                             <div>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae inventore nihil deserunt maxime repudiandae sint distinctio consequuntur explicabo quaerat in et eaque ducimus qui dolor, ratione delectus quos veniam ad.
+                                
+                               <ProductsHome />
+                               
                             </div>
                         </div>
                     </div>

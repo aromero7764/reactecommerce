@@ -1,6 +1,23 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryThunk, setCategory } from '../../../store/slices/category.slice';
 
 const Category = () => {
+
+    const dispatch = useDispatch()
+    const [categories, setCategoryes] = useState([])
+    /* const categories = useSelector((state) => state.category) */
+    
+
+useEffect(()=> {
+    
+    axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/products/categories")
+        .then(res => setCategoryes(res.data.data.categories))
+},[])
+
+console.log(categories)
+
     return (
 
         <div>
@@ -8,9 +25,12 @@ const Category = () => {
                 Category
             </p>
             <ul className="menu-list">
-                <li><a>Category 1</a></li>
-                <li><a>Category 2</a></li>
-                <li><a>Category 3</a></li>
+                {
+                    categories.map(category => (
+                        <li key={category.id}><a>{category.name}</a></li>
+                    ))
+                }
+          
             </ul>
         </div>
     );
