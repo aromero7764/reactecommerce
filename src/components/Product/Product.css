@@ -2,3 +2,24 @@
     height: 85px;
 
 }
+
+.addContainer {
+    width: 50px;
+}
+
+
+    .inputwhid::-webkit-outer-spin-button,
+    .inputwhid::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .inputwhid[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .imgProducts{
+        max-width: 640px;
+        max-height: 640px;
+
+    }

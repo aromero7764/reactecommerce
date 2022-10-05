@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getProductsThunk } from "../../store/slices/products.slice";
 import Loader from "../Loader/Loader";
 import './ProductsHome.css'
@@ -8,6 +9,7 @@ import './ProductsHome.css'
 
 
 const ProductsHome = () => {
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -21,16 +23,15 @@ useEffect(()=> {
 
 }, [])
 
-console.log(products)
 
     return (
         <div className='columns is-multiline'>
             {
                 products.map(product => (
-                    <div className="column is-4">
+                    <div key={product.id} className="column is-4">
                         <div /* navigate(`/pokedex/${pokemonDetails.id}`) */>
                             <div className="card" >
-                                <div className="card-image is-clickable" onClick={() => alert("hello")}>
+                                <div className="card-image is-clickable" onClick={()=> navigate(`/product/${product.id}`) }>
                                     <figure className='image'>
                                         <img className="imageP" src={product.productImgs[0]} alt="image-products" />
                                     </figure>
