@@ -12,15 +12,12 @@ const Login = ({text, style}) => {
 
     const {register, handleSubmit} = useForm()
 
-    console.log(style)
-
     const submit = (data)=> {
 
         axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/users/login', data)
             .then(res=> {
-                console.log(res.data.data.token)
                 localStorage.setItem("token", res.data.data.token)
-                navigate("/")
+                navigate(-1)
             } )
             
             .catch(error => {

@@ -11,9 +11,11 @@ const PurchasesButton = () => {
 
 
     return (
-        <a onClick={goToPurchases} className="button is-light">
-                                <strong>Purchases</strong>
-                            </a>
+        <button onClick={goToPurchases} className="button is-primary">
+            <span  class="icon"> <i className="fa-solid fa-store"> </i></span>
+           <span> Purchases</span>
+                               
+                            </button>
     );
 };
 

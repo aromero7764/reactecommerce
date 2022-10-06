@@ -16,18 +16,10 @@ const ShoppingCardButton = () => {
         setQuickviews (bulmaQuickview.attach() )
     },[])
 
-
-    const dispatch = useDispatch()
     const cartList = useSelector(state => state.cartList)
 
-    useEffect(()=> {
-        dispatch(getCartListThunk())
-    }, [])
-
-
-   
-     const token = localStorage.getItem('token');
-
+   /*  revisar si tengo el token */
+    const token = localStorage.getItem('token');
 
 return (
 
@@ -54,11 +46,11 @@ return (
                 </footer>
             </div>
 
-            <button className="button" data-show="quickview" data-target="quickviewDefault">
-                            <span><i className="fa-solid fa-cart-shopping"></i></span>
+            <a className="button  is-primary mr-3" data-show="quickview" data-target="quickviewDefault">
+                            <span class="icon"><i className="fa-solid fa-cart-shopping"></i></span>
                                 <span title="Badge top right" className="badge">{cartList.length}</span>
-                                Shooping Cart
-                            </button>  
+                                 My Cart
+                            </a>  
 
         </div>
 

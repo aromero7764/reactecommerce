@@ -20,9 +20,9 @@ const NavBarUser = () => {
     return (
         <nav className="navbar is-primary has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className='title' href="/">Ecomerce</a>
+                <a className='title has-text-white' href="/">E-commerce</a>
 
-                <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <a role="button" className="navbar-burger" aria-label="menu">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -31,15 +31,24 @@ const NavBarUser = () => {
 
             <div className="navbar-menu is-active">
                 <div className="navbar-end">
-                    <div className="navbar-item">
-                        <div className="buttons">
-                            <a onClick={()=> navigate("/login")} className="button is-light">
-                                <strong>Loging</strong>
-                            </a>
-                            <PurchasesButton />
-                            <ShoppingCardButton />
-                        </div>
-                    </div>
+
+                <a onClick={()=> navigate("/")} class="navbar-item">
+                <span  class="icon"> <i className="fa-solid fa-house"></i></span>
+           <span> Home</span></a>
+
+                <a onClick={()=> navigate("/login")} class="navbar-item">
+                <span  class="icon"> <i className="fa-solid fa-right-to-bracket"></i></span>
+           <span> Login</span></a>
+                <a class="navbar-item">
+                <PurchasesButton />
+                </a>
+               
+
+                <a class="navbar-item">
+                <ShoppingCardButton />
+                </a>
+                
+
                 </div>
             </div>
         </nav>

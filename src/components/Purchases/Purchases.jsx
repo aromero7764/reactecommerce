@@ -29,8 +29,8 @@ console.log(purchases)
         <div>
             <NavBarUser />
 
-            <div className='container is-max-desktop is-fluid'>
-                <p className='title'>List of Purchsases</p>
+            <div className='container is-max-desktop is-fluid mt-5'>
+                <p className='title'>These are your purchases</p>
             {
                 purchases.map(item => (
                      <article key={item.id} className="message is-link">

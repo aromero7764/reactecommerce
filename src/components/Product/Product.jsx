@@ -3,19 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { Loader } from 'react-bulma-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { addCartItemThunk } from '../../store/slices/cartList.slice';
+import { addCartItemThunk, updateCartItemThunk } from '../../store/slices/cartList.slice';
 import { getProductsThunk } from '../../store/slices/products.slice';
+import Login from '../Login/Login';
 import NavBarUser from '../NavBar/NavBarUser';
 import './Product.css'
 
 const Product = () => {
+
     const [loading, setLoading] = useState(true)
     const [product, setProduct] = useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [qty, setQty] = useState(1)
 
+    /* recibo el id como parametro */
     const {id} = useParams();
+
+    /* renderizo para obtener los datos que voy a mostrar */
 
     useEffect(() => {
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`)
@@ -26,15 +31,24 @@ const Product = () => {
             setQty(1)
     }, [id])
 
+    /* cada vez que cambia id hago un render */
 
-    /* aqui me traigo mis productos */
+
+    /* me traigo los productos con el useState */
     const allProducts = useSelector( state => state.products)
 
+
+/* 
+en est parte  tengo el "id" del producto 
+y sus propiedades las guarde en "produc"
+y me traje todos los productos que estan en el store "allProducts"
+ */
+
         
-useEffect(()=> {
+/* useEffect(()=> {
     dispatch(getProductsThunk())
 
-}, [])
+}, []) */
 
 
   /*   const ProductsDetail = allProducts.find((product) => allProducts.id === id);
@@ -42,25 +56,29 @@ useEffect(()=> {
     (product) => allProducts.category.id === id
   ); */
 
-
+/* para el footer filtro mis categorias similares */
   const ProductsDetail = allProducts.find((product) => product.id === Number(id));
   const relatedProducts = allProducts.filter(
     (product) => product.category.id === ProductsDetail.category.id)
 
-    const addCart = (qty, id) => {
+    const token = localStorage.getItem('token');
+/* esta funcion agrega a la cart un nuevo producto */
 
+/* realizada con thunk */
+    const addCart = (qty, id) => {
+        
         const addNew = {
             id: id,
             quantity: qty
-        }
-dispatch(addCartItemThunk(addNew))
+        }     
+         if (!token) {
+            alert("please login to add products to your cart")
+            navigate("/login")
         
+         } else {
+            dispatch(addCartItemThunk(addNew))
+         }
     } 
-
-    console.log(relatedProducts)
-    console.log(ProductsDetail)
-    console.log(id)
-
 
     return (
         <div>

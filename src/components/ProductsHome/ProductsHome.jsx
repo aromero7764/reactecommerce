@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addCartItemThunk } from "../../store/slices/cartList.slice";
 import { getProductsThunk } from "../../store/slices/products.slice";
 import Loader from "../Loader/Loader";
 import './ProductsHome.css'
@@ -11,7 +12,6 @@ import './ProductsHome.css'
 const ProductsHome = () => {
     
     const navigate = useNavigate()
-
     const dispatch = useDispatch()
 
     /* aqui me traigo mis productos */
@@ -26,6 +26,26 @@ useEffect(()=> {
 
 //id: id
 // qty:
+
+
+const token = localStorage.getItem('token');
+
+
+/* realizada con thunk */
+const addCart = (qty, id) => {
+    
+const addNew = {
+    id: id,
+    quantity: qty
+}     
+ if (!token) {
+    alert("please login to add products to your cart")
+    navigate("/login")
+
+ } else {
+    dispatch(addCartItemThunk(addNew))
+ }
+} 
 
 
     return (
@@ -59,7 +79,7 @@ useEffect(()=> {
                                         </div>
                                         
                                     </div>
-                                    <button onClick={()=> alert("pendiente")} className="button is-danger">Add to cart</button> 
+                                    <button onClick={()=> addCart(1, product.id)} className="button is-danger">Add to cart</button> 
                                 </div> 
                                 
                             </div>

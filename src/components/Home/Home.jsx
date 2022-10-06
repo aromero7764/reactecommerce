@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addCartItemThunk } from '../../store/slices/cartList.slice';
 import Category from '../Aside/Category/Category';
 import Price from '../Aside/Price';
 import Cart from '../Cart/Cart';
@@ -11,15 +13,19 @@ import ShoppingCardButton from '../ShoppingCardButton/ShoppingCardButton';
 
 
 const Home = () => {
+
+
+
+
     return (
         <div>
             <NavBarUser/>
             
-            <div className="mb-6">
+          {/*   <div className="mb-6">
                 <span></span>
-            </div>
-
-            <div className="columns mt-6">
+            </div> */}
+            <div className='container is-fluid'>
+            <div className="columns mt-4 ">
 
                 <div className="column is-one-fifth">
                     {/* this is aside */}
@@ -46,7 +52,7 @@ const Home = () => {
 
                 </div>
             </div>
-
+            </div>
         </div>
     );
 };
