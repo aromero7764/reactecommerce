@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+/* import { createSlice } from '@reduxjs/toolkit';
 
 export const cartOpenSlice = createSlice({
     name: 'cartOpen',
@@ -14,3 +14,4 @@ export const cartOpenSlice = createSlice({
 export const { setCartOpenState } = cartOpenSlice.actions;
 
 export default cartOpenSlice.reducer;
+ */
