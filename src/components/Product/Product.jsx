@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Loader } from 'react-bulma-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addCartItemThunk } from '../../store/slices/cartList.slice';
 import { getProductsThunk } from '../../store/slices/products.slice';
 import NavBarUser from '../NavBar/NavBarUser';
 import './Product.css'
@@ -52,8 +53,7 @@ useEffect(()=> {
             id: id,
             quantity: qty
         }
-
-     console.log(addNew)
+dispatch(addCartItemThunk(addNew))
         
     } 
 

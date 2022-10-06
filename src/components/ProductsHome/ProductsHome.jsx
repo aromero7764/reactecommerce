@@ -59,7 +59,7 @@ useEffect(()=> {
                                         </div>
                                         
                                     </div>
-                                   <button onClick={()=> alert("boton")}>Add Shoping Card</button>
+                                    <button onClick={()=> alert("pendiente")} className="button is-danger">Add to cart</button> 
                                 </div> 
                                 
                             </div>

@@ -66,7 +66,9 @@ const Cart = () => {
                     }
                     
 {/* end */}
-                   
+                   <footer>
+                   <button className="button is-danger is-fullwidth">Chekout</button> 
+                   </footer>
                     
                 </div>
                
