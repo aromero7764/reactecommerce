@@ -16,8 +16,6 @@ useEffect(()=> {
         .then(res => setCategoryes(res.data.data.categories))
 },[])
 
-console.log(categories)
-
     return (
 
         <div>

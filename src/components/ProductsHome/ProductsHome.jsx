@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getProductsThunk } from "../../store/slices/products.slice";
@@ -9,6 +9,7 @@ import './ProductsHome.css'
 
 
 const ProductsHome = () => {
+    
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -22,6 +23,9 @@ useEffect(()=> {
     dispatch(getProductsThunk())
 
 }, [])
+
+//id: id
+// qty:
 
 
     return (

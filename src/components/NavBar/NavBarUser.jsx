@@ -20,9 +20,7 @@ const NavBarUser = () => {
     return (
         <nav className="navbar is-primary has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <button className='navbar-item'>
-                        e-Commerce
-                </button>
+                <a className='title' href="/">Ecomerce</a>
 
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>

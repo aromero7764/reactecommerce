@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@creativebulma/bulma-collapsible": "^1.0.4",
     "@reduxjs/toolkit": "^1.8.5",
     "aios": "^1.0.1",
     "axios": "^0.27.2",

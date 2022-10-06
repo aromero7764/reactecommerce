@@ -12,6 +12,7 @@ const Product = () => {
     const [product, setProduct] = useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [qty, setQty] = useState(1)
 
     const {id} = useParams();
 
@@ -21,6 +22,7 @@ const Product = () => {
             .catch(error => {alert(`no se encontro el producto con el id ${id}`)
                         navigate("/")})
             .finally(()=> setLoading(false))
+            setQty(1)
     }, [id])
 
 
@@ -43,6 +45,17 @@ useEffect(()=> {
   const ProductsDetail = allProducts.find((product) => product.id === Number(id));
   const relatedProducts = allProducts.filter(
     (product) => product.category.id === ProductsDetail.category.id)
+
+    const addCart = (qty, id) => {
+
+        const addNew = {
+            id: id,
+            quantity: qty
+        }
+
+     console.log(addNew)
+        
+    } 
 
     console.log(relatedProducts)
     console.log(ProductsDetail)
@@ -87,9 +100,9 @@ useEffect(()=> {
                                         <div className="product-quantity">
                                             <div className="heading">Quantity</div>
                                             <div className='addContainer is-flex'>
-                                                <button className='button'><i className="fa-solid fa-minus"></i></button>
-                                                <input className='input inputwhid' type="number" />
-                                                <button className='button'><i className="fa-solid fa-plus"></i></button>
+                                                <button onClick={()=> setQty(qty -1)} className='button'><i className="fa-solid fa-minus"></i></button>
+                                                <span className='px-2'> <p className='title'>{qty}</p> </span>
+                                                <button onClick={()=> setQty(qty +1)} className='button'><i className="fa-solid fa-plus"></i></button>
 
 
                                             </div>
@@ -100,7 +113,7 @@ useEffect(()=> {
 
                                 </div>
                             </div> <hr />
-                            </div> <button className="button is-danger is-fullwidth">Add to cart</button> <hr />
+                            </div> <button onClick={()=> addCart(qty, id)} className="button is-danger is-fullwidth">Add to cart</button> <hr />
 
                             <div><p>{product.description}</p>
                             </div> <hr /> <div className="share-buttons level">
@@ -134,7 +147,7 @@ useEffect(()=> {
                                     else {
                                     return (
                                 
-                                <div className='column is-3'>
+                                <div key={item.id} className='column is-3'>
                                 <div className="card">
                                    <Link to={`/product/${item.id}`}>
                                     <div className="card-image is-clickable">
@@ -152,7 +165,7 @@ useEffect(()=> {
                                         <div>
                                             <footer className='card-footer'>
                                                 <p className='card-footer-item is-size-7'>
-                                                    <button className='button'>add cart</button> 
+                                                <button onClick={()=> addCart(1, item.id)} className="button is-danger is-fullwidth">Add to cart</button> 
                                                     </p>
                                             </footer>
                                         </div>
